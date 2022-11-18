@@ -1,0 +1,21 @@
+@use "src/style/mixins";
+
+.searchIcon {
+  @include mixins.icon();
+
+  &::after {
+    content: "\e8b6";
+  }
+}
+
+.closeIcon {
+  @include mixins.icon($translate: (-100%, -50%));
+
+  &::after {
+    content: "\e5cd";
+  }
+}
+
+.searchInput {
+  padding-left: 20px;
+}

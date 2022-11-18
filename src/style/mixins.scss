@@ -1,0 +1,14 @@
+@use "src/style/colors";
+
+@mixin icon($translate: (5px, -50%)) {
+  transform: translate($translate);
+  top: 50%;
+  position: absolute;
+  cursor: pointer;
+
+  &::after {
+    content: "\e8b6";
+    font-family: "Material Symbols Outlined";
+    color: colors.$iconColor;
+  }
+}
