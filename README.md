@@ -1,16 +1,10 @@
 ## Available Scripts
 
-### To install dependencies for both clien and server, run:  
-`npm run deps`
+### To install dependencies:  
+`npm run install`
 
 ### To start the project run:  
-
-`npm run dev`  
+`npm run start`  
 
 ### To see the project open:  
-
-[http://localhost:3004](http://localhost:3040) in the browser.
-
-Server is running on
-
-[http://localhost:3000](http://localhost:3000) # search-with-autocomplete
+[http://localhost:4000](http://localhost:4040) in the browser.
