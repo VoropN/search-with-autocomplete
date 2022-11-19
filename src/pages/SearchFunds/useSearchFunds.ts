@@ -10,7 +10,7 @@ export const useSearchFunds = () => {
   const [searchValue, setSearchValue] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const debouncedSearch = useDebounce(searchValue, 300);
-  const searchableLength = 2;
+  const searchableLength = 3;
 
   useEffect(() => {
     if (debouncedSearch.length < searchableLength) {
