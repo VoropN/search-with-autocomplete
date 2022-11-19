@@ -18,11 +18,13 @@ export const List = memo(
         ) : (
           <Table className={style.table} ref={listRef}>
             <thead className={style.head}>
-              {headers.map(({ name, ...props }) => (
-                <th key={name} {...props}>
-                  {name}
-                </th>
-              ))}
+              <tr>
+                {headers.map(({ name, ...props }) => (
+                  <th key={name} {...props}>
+                    {name}
+                  </th>
+                ))}
+              </tr>
             </thead>
             <tbody>{rows}</tbody>
           </Table>
