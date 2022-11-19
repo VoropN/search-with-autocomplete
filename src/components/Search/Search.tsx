@@ -13,11 +13,11 @@ interface ISearch {
 
 export const Search = memo(
   ({
-    searchRef,
-    searchValue,
-    setSearch,
     onFocus,
+    searchRef,
     onKeyDown,
+    setSearch,
+    searchValue,
     placeholder = "",
   }: ISearch) => {
     const onUpdateSearch = useCallback(
@@ -32,11 +32,11 @@ export const Search = memo(
       <div className={style.container}>
         <span className={style.searchIcon} onClick={onFocus} />
         <input
-          onKeyDown={onKeyDown}
-          onClick={onFocus}
           ref={searchRef}
           type="text"
           value={searchValue}
+          onClick={onFocus}
+          onKeyDown={onKeyDown}
           onChange={onUpdateSearch}
           className={style.searchInput}
           placeholder={placeholder}

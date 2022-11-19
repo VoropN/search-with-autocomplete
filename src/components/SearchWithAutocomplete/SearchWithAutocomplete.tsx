@@ -1,9 +1,9 @@
-import { useState, useCallback } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Loader } from "@mantine/core";
-import { useClickOutside } from "@mantine/hooks";
 import { List, Search } from "src/components";
 
 import style from "./style.module.scss";
+import { useOnClickOutside } from "src/hooks";
 
 interface ISearchWithAutocomplete {
   rows: React.ReactNode[];
@@ -24,31 +24,31 @@ export const SearchWithAutocomplete = ({
   listPlaceholder,
   searchPlaceholder,
 }: ISearchWithAutocomplete) => {
-  const [dropdown, setDropdown] = useState<HTMLInputElement | null>(null);
-  const [control, setControl] = useState<HTMLInputElement | null>(null);
-
+  const listRef = useRef<HTMLInputElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
   const [opened, setOpened] = useState(false);
-  useClickOutside(() => setOpened(false), null, [control, dropdown as any]);
+  useOnClickOutside(() => setOpened(false), [listRef, searchRef]);
+
   const onHideAutocomplete = useCallback(
     (event: React.KeyboardEvent) => {
       if (event.key === "Escape") {
-        control?.blur();
+        searchRef.current?.blur();
         setOpened(false);
       }
     },
-    [control, setOpened]
+    [searchRef, setOpened]
   );
   const onFocus = useCallback(() => {
-    control?.focus();
+    searchRef.current?.focus();
     setOpened(true);
-  }, [control]);
+  }, [searchRef]);
 
   return (
     <div className={style.container}>
       <Search
         onFocus={onFocus}
         onKeyDown={onHideAutocomplete}
-        searchRef={setControl}
+        searchRef={searchRef}
         setOpened={setOpened}
         setSearch={setSearchValue}
         searchValue={searchValue}
@@ -58,13 +58,18 @@ export const SearchWithAutocomplete = ({
         (isSearching ? (
           <Loader className={style.loader} />
         ) : (
-          <List
-            rows={rows}
-            headers={headers}
-            listRef={setDropdown}
+          <div
+            tabIndex={0}
+            className={style.listContainer}
             onKeyDown={onHideAutocomplete}
-            placeholder={listPlaceholder}
-          />
+          >
+            <List
+              rows={rows}
+              headers={headers}
+              listRef={listRef}
+              placeholder={listPlaceholder}
+            />
+          </div>
         ))}
     </div>
   );
