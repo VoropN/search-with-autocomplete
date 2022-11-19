@@ -1,4 +1,39 @@
+@use "src/style/colors";
+
 .container {
-  max-height: 400px;
-  overflow-y: auto;
+  overflow: auto;
+  height: inherit;
+}
+
+.placeholder {
+  text-align: center;
+  background: white;
+  border-radius: 4px;
+}
+
+.table {
+  padding: 0;
+  margin: 0;
+  table-layout: fixed;
+  text-align: center;
+  background: white;
+  border-radius: 4px;
+
+  thead {
+    top: 0;
+    position: sticky;
+    background: white;
+  }
+
+  th {
+    height: 60px;
+    font-size: 14px;
+  }
+
+  tr {
+    &:hover {
+      cursor: pointer;
+      background-color: colors.$hover;
+    }
+  }
 }

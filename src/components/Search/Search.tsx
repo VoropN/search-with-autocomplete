@@ -3,10 +3,11 @@ import style from "./style.module.scss";
 
 interface ISearch {
   search: string;
+  placeholder?: string;
   setSearch: (value: string) => void;
 }
 
-export const Search = memo(({ search, setSearch }: ISearch) => {
+export const Search = memo(({ search, setSearch, placeholder = '' }: ISearch) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const onUpdateSearch = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -18,14 +19,15 @@ export const Search = memo(({ search, setSearch }: ISearch) => {
   const onFocus = useCallback(() => inputRef.current?.focus(), [inputRef]);
 
   return (
-    <div>
+    <div className={style.container}>
       <span className={style.searchIcon} onClick={onFocus} />
       <input
+        ref={inputRef}
         type="text"
         value={search}
         onChange={onUpdateSearch}
-        ref={inputRef}
         className={style.searchInput}
+        placeholder={placeholder}
       />
       {search && <span className={style.closeIcon} onClick={onClear} />}
     </div>
