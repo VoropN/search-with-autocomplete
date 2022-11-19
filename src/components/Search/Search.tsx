@@ -2,10 +2,11 @@ import { ChangeEvent, memo, useCallback, useEffect, useRef } from "react";
 import style from "./style.module.scss";
 
 interface ISearch {
-  search: string;
+  searchValue: string;
   placeholder?: string;
   setOpened: (isOpen: boolean) => void;
   setSearch: (value: string) => void;
+  onFocus?: () => void;
   searchRef?: any;
   onKeyDown?: (event: React.KeyboardEvent) => void;
 }
@@ -13,9 +14,9 @@ interface ISearch {
 export const Search = memo(
   ({
     searchRef,
-    search,
+    searchValue,
     setSearch,
-    setOpened,
+    onFocus,
     onKeyDown,
     placeholder = "",
   }: ISearch) => {
@@ -26,10 +27,6 @@ export const Search = memo(
       [setSearch]
     );
     const onClear = useCallback(() => setSearch(""), [setSearch]);
-    const onFocus = useCallback(() => {
-      searchRef.current?.focus();
-      setOpened(true);
-    }, [searchRef]);
 
     return (
       <div className={style.container}>
@@ -39,12 +36,12 @@ export const Search = memo(
           onClick={onFocus}
           ref={searchRef}
           type="text"
-          value={search}
+          value={searchValue}
           onChange={onUpdateSearch}
           className={style.searchInput}
           placeholder={placeholder}
         />
-        {search && <span className={style.closeIcon} onClick={onClear} />}
+        {searchValue && <span className={style.closeIcon} onClick={onClear} />}
       </div>
     );
   }
