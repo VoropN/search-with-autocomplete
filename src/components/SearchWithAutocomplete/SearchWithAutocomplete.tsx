@@ -1,9 +1,10 @@
 import { useState, useRef, useCallback } from "react";
 import { Loader } from "@mantine/core";
+
 import { List, Search } from "src/components";
+import { useOnClickOutside } from "src/hooks";
 
 import style from "./style.module.scss";
-import { useOnClickOutside } from "src/hooks";
 
 interface ISearchWithAutocomplete {
   rows: React.ReactNode[];

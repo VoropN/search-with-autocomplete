@@ -28,9 +28,9 @@
 
   &::after {
     content: "\e5cd";
-    transform: translate(-50%);
-    position: absolute;
     top: -1px;
+    position: absolute;
+    transform: translate(-50%);
   }
 }
 
