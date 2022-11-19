@@ -1,7 +1,5 @@
-import { useMemo, useState, useEffect } from "react";
-import { Loader, Portal } from "@mantine/core";
-import { useClickOutside } from "@mantine/hooks";
-import { List, Search, SearchWithAutocomplete } from "src/components";
+import { useMemo} from "react";
+import { SearchWithAutocomplete } from "src/components";
 import style from "./style.module.scss";
 import { useSearchFunds } from "./useSearchFunds";
 import { HighlightedText } from "src/components";

@@ -1,14 +1,14 @@
-import { ChangeEvent, memo, useCallback, useEffect, useRef } from "react";
+import { ChangeEvent, memo, useCallback } from "react";
 import style from "./style.module.scss";
 
 interface ISearch {
-  searchValue: string;
-  placeholder?: string;
+  onFocus?: () => void;
   setOpened: (isOpen: boolean) => void;
   setSearch: (value: string) => void;
-  onFocus?: () => void;
   searchRef?: any;
   onKeyDown?: (event: React.KeyboardEvent) => void;
+  searchValue: string;
+  placeholder?: string;
 }
 
 export const Search = memo(
