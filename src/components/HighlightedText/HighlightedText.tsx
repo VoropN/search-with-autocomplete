@@ -1,8 +1,8 @@
-import { memo } from "react";
+import { memo } from 'react'
 
 interface IHighlightedText {
-  text: string;
-  valueToHighlight: string;
+  text: string
+  valueToHighlight: string
 }
 
 export const HighlightedText = memo(
@@ -11,11 +11,11 @@ export const HighlightedText = memo(
       <span
         dangerouslySetInnerHTML={{
           __html: text.replace(
-            new RegExp(valueToHighlight, "i"),
+            new RegExp(valueToHighlight, 'i'),
             (val: string) => `<b>${val}</b>`
-          ),
+          )
         }}
       />
-    );
+    )
   }
-);
+)

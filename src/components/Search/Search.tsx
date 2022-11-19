@@ -1,14 +1,15 @@
-import { ChangeEvent, memo, useCallback } from "react";
-import style from "./style.module.scss";
+import { ChangeEvent, memo, useCallback } from 'react'
+
+import style from './style.module.scss'
 
 interface ISearch {
-  onFocus?: () => void;
-  setOpened: (isOpen: boolean) => void;
-  setSearch: (value: string) => void;
-  searchRef?: any;
-  onKeyDown?: (event: React.KeyboardEvent) => void;
-  searchValue: string;
-  placeholder?: string;
+  onFocus?: () => void
+  setOpened: (isOpen: boolean) => void
+  setSearch: (value: string) => void
+  searchRef?: any
+  onKeyDown?: (event: React.KeyboardEvent) => void
+  searchValue: string
+  placeholder?: string
 }
 
 export const Search = memo(
@@ -18,15 +19,15 @@ export const Search = memo(
     onKeyDown,
     setSearch,
     searchValue,
-    placeholder = "",
+    placeholder = ''
   }: ISearch) => {
     const onUpdateSearch = useCallback(
       (event: ChangeEvent<HTMLInputElement>) => {
-        setSearch(event.target.value);
+        setSearch(event.target.value)
       },
       [setSearch]
-    );
-    const onClear = useCallback(() => setSearch(""), [setSearch]);
+    )
+    const onClear = useCallback(() => setSearch(''), [setSearch])
 
     return (
       <div className={style.container}>
@@ -43,6 +44,6 @@ export const Search = memo(
         />
         {searchValue && <span className={style.closeIcon} onClick={onClear} />}
       </div>
-    );
+    )
   }
-);
+)

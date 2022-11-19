@@ -1,19 +1,19 @@
-import { useState, useRef, useCallback } from "react";
-import { Loader } from "@mantine/core";
+import { useState, useRef, useCallback } from 'react'
+import { Loader } from '@mantine/core'
 
-import { List, Search } from "src/components";
-import { useOnClickOutside } from "src/hooks";
+import { List, Search } from 'src/components'
+import { useOnClickOutside } from 'src/hooks'
 
-import style from "./style.module.scss";
+import style from './style.module.scss'
 
 interface ISearchWithAutocomplete {
-  rows: React.ReactNode[];
-  headers: { name: string; className?: string }[];
-  searchValue: string;
-  isSearching?: boolean;
-  setSearchValue: (value: string) => void;
-  listPlaceholder?: React.ReactNode;
-  searchPlaceholder?: string;
+  rows: React.ReactNode[]
+  headers: Array<{ name: string, className?: string }>
+  searchValue: string
+  isSearching?: boolean
+  setSearchValue: (value: string) => void
+  listPlaceholder?: React.ReactNode
+  searchPlaceholder?: string
 }
 
 export const SearchWithAutocomplete = ({
@@ -23,26 +23,26 @@ export const SearchWithAutocomplete = ({
   isSearching,
   setSearchValue,
   listPlaceholder,
-  searchPlaceholder,
+  searchPlaceholder
 }: ISearchWithAutocomplete) => {
-  const listRef = useRef<HTMLInputElement>(null);
-  const searchRef = useRef<HTMLInputElement>(null);
-  const [opened, setOpened] = useState(false);
-  useOnClickOutside(() => setOpened(false), [listRef, searchRef]);
+  const listRef = useRef<HTMLInputElement>(null)
+  const searchRef = useRef<HTMLInputElement>(null)
+  const [opened, setOpened] = useState(false)
+  useOnClickOutside(() => setOpened(false), [listRef, searchRef])
 
   const onHideAutocomplete = useCallback(
     (event: React.KeyboardEvent) => {
-      if (event.key === "Escape") {
-        searchRef.current?.blur();
-        setOpened(false);
+      if (event.key === 'Escape') {
+        searchRef.current?.blur()
+        setOpened(false)
       }
     },
     [searchRef, setOpened]
-  );
+  )
   const onFocus = useCallback(() => {
-    searchRef.current?.focus();
-    setOpened(true);
-  }, [searchRef]);
+    searchRef.current?.focus()
+    setOpened(true)
+  }, [searchRef])
 
   return (
     <div className={style.container}>
@@ -56,9 +56,11 @@ export const SearchWithAutocomplete = ({
         placeholder={searchPlaceholder}
       />
       {opened &&
-        (isSearching ? (
+        (isSearching
+          ? (
           <Loader className={style.loader} />
-        ) : (
+            )
+          : (
           <div
             tabIndex={0}
             className={style.listContainer}
@@ -71,7 +73,7 @@ export const SearchWithAutocomplete = ({
               placeholder={listPlaceholder}
             />
           </div>
-        ))}
+            ))}
     </div>
-  );
-};
+  )
+}

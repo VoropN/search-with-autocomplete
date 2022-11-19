@@ -1,1 +1,1 @@
-export * from './SearchWithAutocomplete';
+export * from './SearchWithAutocomplete'

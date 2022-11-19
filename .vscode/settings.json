@@ -1,0 +1,6 @@
+{
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "prettier.insertPragma": true,
+  "editor.formatOnSave": true
+}

@@ -1,7 +1,7 @@
-import { MantineProvider } from "@mantine/core";
-import { NotificationsProvider } from "@mantine/notifications";
+import { MantineProvider } from '@mantine/core'
+import { NotificationsProvider } from '@mantine/notifications'
 
-import { SearchFunds } from "src/pages";
+import { SearchFunds } from 'src/pages'
 
 export const App = () => {
   return (
@@ -10,5 +10,5 @@ export const App = () => {
         <SearchFunds />
       </NotificationsProvider>
     </MantineProvider>
-  );
-};
+  )
+}
