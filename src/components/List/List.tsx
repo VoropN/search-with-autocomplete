@@ -6,11 +6,13 @@ interface IList {
   headers: { name: string; className?: string }[];
   rows: React.ReactNode[];
   placeholder?: React.ReactNode;
+  listRef?: any;
+  onKeyDown?: (event: React.KeyboardEvent) => void;
 }
 
-export const List = ({ headers, rows, placeholder = "" }: IList) => {
+export const List = ({ headers, rows, listRef, onKeyDown, placeholder = "" }: IList) => {
   return (
-    <div className={style.container}>
+    <div className={style.container} ref={listRef} tabIndex={0} onKeyDown={onKeyDown}>
       {!rows.length ? (
         <div className={style.placeholder}>{placeholder}</div>
       ) : (
