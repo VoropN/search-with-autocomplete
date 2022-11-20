@@ -1,8 +1,8 @@
-import { memo } from 'react'
+import { memo } from 'react';
 
 interface IHighlightedText {
-  text: string
-  valueToHighlight: string
+  text: string;
+  valueToHighlight: string;
 }
 
 export const HighlightedText = memo(
@@ -16,6 +16,6 @@ export const HighlightedText = memo(
           )
         }}
       />
-    )
+    );
   }
-)
+);

@@ -1,1 +1,1 @@
-export * from './SearchFunds'
+export * from './SearchFunds';

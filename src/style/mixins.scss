@@ -1,6 +1,11 @@
-@use "src/style/colors";
+@use './colors';
 
-@mixin icon($translate: (5px, -50%)) {
+@mixin icon(
+  $translate: (
+    5px,
+    -50%
+  )
+) {
   transform: translate($translate);
   top: 50%;
   position: absolute;
@@ -10,8 +15,8 @@
   border-radius: 50%;
 
   &::after {
-    content: "\e8b6";
-    font-family: "Material Symbols Outlined";
+    content: '\e8b6';
+    font-family: 'Material Symbols Outlined';
     color: colors.$iconColor;
     font-size: 24px;
   }

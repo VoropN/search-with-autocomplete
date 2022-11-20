@@ -1,11 +1,11 @@
-import { useMemo } from 'react'
-import { SearchWithAutocomplete, HighlightedText } from 'src/components'
-import { useSearchFunds } from './useSearchFunds'
-import style from './style.module.scss'
+import { useMemo } from 'react';
+import { SearchWithAutocomplete, HighlightedText } from 'src/components';
+import { useSearchFunds } from './useSearchFunds';
+import style from './style.module.scss';
 
 export const SearchFunds = () => {
   const { funds, searchValue, setSearchValue, isSearching, placeholder } =
-    useSearchFunds()
+    useSearchFunds();
   const rows = useMemo(
     () =>
       funds.map(({ name, ticker, exchange, id }) => (
@@ -20,12 +20,15 @@ export const SearchFunds = () => {
         </tr>
       )),
     [funds, searchValue]
-  )
-  const headers = useMemo(() => [
-    { name: 'Name', className: style.nameHead },
-    { name: 'Ticker' },
-    { name: 'Exchange' }
-  ], [])
+  );
+  const headers = useMemo(
+    () => [
+      { name: 'Name', className: style.nameHead },
+      { name: 'Ticker' },
+      { name: 'Exchange' }
+    ],
+    []
+  );
 
   return (
     <SearchWithAutocomplete
@@ -37,5 +40,5 @@ export const SearchFunds = () => {
       listPlaceholder={placeholder}
       searchPlaceholder="Search for securities"
     />
-  )
-}
+  );
+};

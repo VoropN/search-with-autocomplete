@@ -1,7 +1,5 @@
-/** @format */
-
-@use "src/style/mixins";
-@use "src/style/colors";
+@use '../../style/mixins';
+@use '../../style/colors';
 
 .container {
   position: relative;
@@ -12,7 +10,7 @@
   @include mixins.icon();
 
   &::after {
-    content: "\e8b6";
+    content: '\e8b6';
   }
 }
 
@@ -20,7 +18,7 @@
   @include mixins.icon(
     $translate: (
       calc(-100% - 8px),
-      -50%,
+      -50%
     )
   );
 
@@ -29,7 +27,7 @@
   }
 
   &::after {
-    content: "\e5cd";
+    content: '\e5cd';
     top: -1px;
     position: absolute;
     transform: translate(-50%);
@@ -42,7 +40,7 @@
   width: 100%;
   border: 0;
   height: 36px;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   background: white;
   border-radius: 4px;
   outline: none;
